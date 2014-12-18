@@ -22,19 +22,19 @@
 {{/colorStats}}
 
 {{#fontStats}}
-    {{#values.length}}
-    <div class="uniq-fonts">
-    <h2>{{values.length}} {{title}}</h2>
-    <ul class="uniq-fonts-list">
-        {{#values}}
-        <li class="uniq-fonts-item" style="font-size: {{value}}">
-            {{value}}
-            <span class="uniq-fonts-count">({{count}})</span>
-        </li>
-        {{/values}}
-    </ul>
+<div class="uniq-font-sizes">
+<h2>{{total}} unique font sizes</h2>
+    {{#groups}}
+        {{#values.length}}
+        <h3>{{values.length}} {{title}}</h3>
+        <ul>
+            {{#values}}
+            <li>{{value}} <span class="uniq-font-sizes-count">({{count}})</span></li>
+            {{/values}}
+        </ul>
+        {{/values.length}}
+    {{/groups}}
     </div>
-    {{/values.length}}
 {{/fontStats}}
 
 </div>

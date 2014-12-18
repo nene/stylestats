@@ -39,12 +39,12 @@
     background-color: white;
 }
 
-.uniq-fonts {
+.uniq-font-sizes {
     clear: both;
     padding-top: 1em;
 }
 
-.uniq-fonts-count {
+.uniq-font-sizes-count {
     color: gray;
     font-size: 12px;
 }
