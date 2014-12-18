@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Color stats</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="content">
+<h1>Colors</h1>
+
+{{#colorStats}}
+    {{#colors.length}}
+    <div class="uniq-colors">
+    <h2>{{colors.length}} {{title}}</h2>
+    <ul class="uniq-colors-list">
+        {{#colors}}
+        <li class="uniq-colors-item" style="background-color: {{color}}">{{count}} <span>{{color}}</span></li>
+        {{/colors}}
+    </ul>
+    </div>
+    {{/colors.length}}
+{{/colorStats}}
+
+{{#fontStats}}
+    {{#values.length}}
+    <div class="uniq-fonts">
+    <h2>{{values.length}} {{title}}</h2>
+    <ul class="uniq-fonts-list">
+        {{#values}}
+        <li class="uniq-fonts-item" style="font-size: {{value}}">
+            {{value}}
+            <span class="uniq-fonts-count">({{count}})</span>
+        </li>
+        {{/values}}
+    </ul>
+    </div>
+    {{/values.length}}
+{{/fontStats}}
+
+</div>
+</body>
+</html>

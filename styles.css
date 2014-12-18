@@ -1,0 +1,50 @@
+.content {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.uniq-colors {
+    clear: both;
+    padding-top: 1em;
+}
+
+.uniq-colors-list {
+    list-style: none;
+}
+.uniq-colors-item {
+    position: relative;
+    display: block;
+    float: left;
+    width: 100px;
+    height: 100px;
+    margin-bottom: 5px;
+    margin-right: 1px;
+    line-height: 100px;
+    text-align: center;
+    font-family: monospace;
+    font-size: 26px;
+    text-shadow: white 1px 1px 1px, white -1px -1px 1px, white -1px 1px 1px, white 1px -1px 1px;
+}
+.uniq-colors-item::first-line {
+    -font-size: 0;
+}
+.uniq-colors-item span {
+    position: absolute;
+    display: block;
+    font-size: 12px;
+    line-height: 14px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: white;
+}
+
+.uniq-fonts {
+    clear: both;
+    padding-top: 1em;
+}
+
+.uniq-fonts-count {
+    color: gray;
+    font-size: 12px;
+}

@@ -1,0 +1,14 @@
+{
+  "name": "stylestats",
+  "desription": "CSS statistics generator",
+  "version": "1.0.0",
+  "private": true,
+  "license": "MIT",
+  "dependencies": {
+    "css-property-value-parser": "^1.0.0",
+    "lodash": "^2.4.1",
+    "mustache": "^0.8.2",
+    "postcss": "^3.0.7",
+    "tinycolor2": "^1.1.1"
+  }
+}
