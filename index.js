@@ -4,6 +4,7 @@ var mustache = require("mustache");
 var Iterator = require("./lib/Iterator");
 var colorStats = require("./lib/colorStats");
 var fontStats = require("./lib/fontStats");
+var borderRadiusStats = require("./lib/borderRadiusStats");
 
 var filename = process.argv[2];
 var templateFilename = process.argv[3];
@@ -17,6 +18,7 @@ if (templateFilename) {
     var html = mustache.render(template, {
         colorStats: colorStats(iterator),
         fontStats: fontStats(iterator),
+        borderRadiusStats: borderRadiusStats(iterator),
     });
     console.log(html);
 }

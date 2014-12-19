@@ -22,20 +22,36 @@
 {{/colorStats}}
 
 {{#fontStats}}
-<div class="uniq-font-sizes">
-<h2>{{total}} unique font sizes</h2>
+<div class="uniq-sizes">
+<h2>{{total}} {{title}}</h2>
     {{#groups}}
         {{#values.length}}
         <h3>{{values.length}} {{title}}</h3>
         <ul>
             {{#values}}
-            <li>{{value}} <span class="uniq-font-sizes-count">({{count}})</span></li>
+            <li>{{value}} <span class="uniq-sizes-count">({{count}})</span></li>
             {{/values}}
         </ul>
         {{/values.length}}
     {{/groups}}
     </div>
 {{/fontStats}}
+
+{{#borderRadiusStats}}
+<div class="uniq-sizes">
+<h2>{{total}} {{title}}</h2>
+    {{#groups}}
+        {{#values.length}}
+        <h3>{{values.length}} {{title}}</h3>
+        <ul>
+            {{#values}}
+            <li>{{value}} <span class="uniq-sizes-count">({{count}})</span></li>
+            {{/values}}
+        </ul>
+        {{/values.length}}
+    {{/groups}}
+    </div>
+{{/borderRadiusStats}}
 
 </div>
 </body>
