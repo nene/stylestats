@@ -17,8 +17,10 @@ if (templateFilename) {
     var template = fs.readFileSync(templateFilename, "utf8");
     var html = mustache.render(template, {
         colorStats: colorStats(iterator),
-        fontStats: fontStats(iterator),
-        borderRadiusStats: borderRadiusStats(iterator),
+        sizeStats: [
+            fontStats(iterator),
+            borderRadiusStats(iterator),
+        ]
     });
     console.log(html);
 }

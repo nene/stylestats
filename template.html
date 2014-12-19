@@ -21,7 +21,7 @@
     {{/colors.length}}
 {{/colorStats}}
 
-{{#fontStats}}
+{{#sizeStats}}
 <div class="uniq-sizes">
 <h2>{{total}} {{title}}</h2>
     {{#groups}}
@@ -35,23 +35,7 @@
         {{/values.length}}
     {{/groups}}
     </div>
-{{/fontStats}}
-
-{{#borderRadiusStats}}
-<div class="uniq-sizes">
-<h2>{{total}} {{title}}</h2>
-    {{#groups}}
-        {{#values.length}}
-        <h3>{{values.length}} {{title}}</h3>
-        <ul>
-            {{#values}}
-            <li>{{value}} <span class="uniq-sizes-count">({{count}})</span></li>
-            {{/values}}
-        </ul>
-        {{/values.length}}
-    {{/groups}}
-    </div>
-{{/borderRadiusStats}}
+{{/sizeStats}}
 
 </div>
 </body>
