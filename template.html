@@ -6,8 +6,8 @@
 </head>
 <body>
 <div class="content">
-<h1>Colors</h1>
 
+<h1>Colors</h1>
 {{#colorStats}}
     {{#colors.length}}
     <div class="uniq-colors">
@@ -21,6 +21,7 @@
     {{/colors.length}}
 {{/colorStats}}
 
+<h1>Sizes</h1>
 {{#sizeStats}}
 <div class="uniq-sizes">
 <h2>{{total}} {{title}}</h2>
@@ -36,6 +37,29 @@
     {{/groups}}
     </div>
 {{/sizeStats}}
+
+{{#selectorStats}}
+    <h1>Selectors</h1>
+
+    <div class="uniq-sizes">
+      <h2>Selector types</h2>
+        <ul>
+            {{#types}}
+            <li>{{type}} <span class="uniq-sizes-count">({{count}})</span></li>
+            {{/types}}
+        </ul>
+    </div>
+
+    <div class="uniq-sizes">
+      <h2>Specificity chart</h2>
+      {{&specificityChart}}
+    </div>
+
+    <div class="uniq-sizes">
+      <h2>Complexity chart</h2>
+      {{&complexityChart}}
+    </div>
+{{/selectorStats}}
 
 </div>
 </body>
