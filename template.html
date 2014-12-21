@@ -1,51 +1,58 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Color stats</title>
+<title>Style stats</title>
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 <div class="content">
 
-<h1>Colors</h1>
-{{#colorStats}}
-    {{#colors.length}}
-    <div class="uniq-colors">
-    <h2>{{colors.length}} {{title}}</h2>
-    <ul class="uniq-colors-list">
-        {{#colors}}
-        <li class="uniq-colors-item" style="background-color: {{color}}">{{count}} <span>{{color}}</span></li>
-        {{/colors}}
-    </ul>
-    </div>
-    {{/colors.length}}
-{{/colorStats}}
-
-<h1>Sizes</h1>
-{{#sizeStats}}
-<div class="uniq-sizes">
-<h2>{{total}} {{title}}</h2>
-    {{#groups}}
-        {{#values.length}}
-        <h3>{{values.length}} {{title}}</h3>
-        <ul>
-            {{#values}}
-            <li>{{value}} <span class="uniq-sizes-count">({{count}})</span></li>
-            {{/values}}
+{{#colorStats.length}}
+    <h1>Colors</h1>
+    {{#colorStats}}
+        {{#colors.length}}
+        <div>
+        <h2>{{colors.length}} {{title}}</h2>
+        <ul class="colors-grid">
+            {{#colors}}
+            <li class="colors-grid-item" style="background-color: {{color}}">
+                {{count}}
+                <span class="colors-grid-hexcode">{{color}}</span>
+            </li>
+            {{/colors}}
         </ul>
-        {{/values.length}}
-    {{/groups}}
-    </div>
-{{/sizeStats}}
+        </div>
+        {{/colors.length}}
+    {{/colorStats}}
+{{/colorStats.length}}
+
+{{#sizeStats.length}}
+    <h1>Sizes</h1>
+    {{#sizeStats}}
+    <div>
+    <h2>{{total}} {{title}}</h2>
+        {{#groups}}
+            {{#values.length}}
+            <h3>{{values.length}} {{title}}</h3>
+            <ul>
+                {{#values}}
+                <li>{{value}} <span class="size-count">({{count}})</span></li>
+                {{/values}}
+            </ul>
+            {{/values.length}}
+        {{/groups}}
+        </div>
+    {{/sizeStats}}
+{{/sizeStats.length}}
 
 {{#selectorStats}}
     <h1>Selectors</h1>
 
-    <div class="uniq-sizes">
+    <div>
       <h2>Selector types</h2>
         <ul>
             {{#types}}
-            <li>{{type}} <span class="uniq-sizes-count">({{count}})</span></li>
+            <li>{{type}} <span class="size-count">({{count}})</span></li>
             {{/types}}
         </ul>
     </div>

@@ -3,15 +3,11 @@
     margin: 0 auto;
 }
 
-.uniq-colors {
-    clear: both;
-    padding-top: 1em;
-}
-
-.uniq-colors-list {
+.colors-grid {
     list-style: none;
+    overflow: auto;
 }
-.uniq-colors-item {
+.colors-grid-item {
     position: relative;
     display: block;
     float: left;
@@ -25,10 +21,7 @@
     font-size: 26px;
     text-shadow: white 1px 1px 1px, white -1px -1px 1px, white -1px 1px 1px, white 1px -1px 1px;
 }
-.uniq-colors-item::first-line {
-    -font-size: 0;
-}
-.uniq-colors-item span {
+.colors-grid-hexcode {
     position: absolute;
     display: block;
     font-size: 12px;
@@ -39,12 +32,7 @@
     background-color: white;
 }
 
-.uniq-sizes {
-    clear: both;
-    padding-top: 1em;
-}
-
-.uniq-sizes-count {
+.size-count {
     color: gray;
     font-size: 12px;
 }
