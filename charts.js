@@ -17,9 +17,9 @@ function drawSpecificityChart() {
 
     var chartEl = document.getElementById('specificity-chart');
 
-    var series = [['', 'Element', 'Class', 'ID']];
+    var series = [['', 'Element', 'Class', 'ID', '!important']];
     JSON.parse(chartEl.getAttribute("data-series")).forEach(function(item) {
-        series.push(['', item[2], item[1], item[0]]);
+        series.push(['', item[3], item[2], item[1], item[0]]);
     });
     var data =  google.visualization.arrayToDataTable(series);
 
