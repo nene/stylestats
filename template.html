@@ -3,6 +3,8 @@
 <head>
 <title>Style stats</title>
 <link rel="stylesheet" href="styles.css">
+<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+<script type="text/javascript" src="charts.js"></script>
 </head>
 <body>
 <div class="content">
@@ -58,8 +60,8 @@
     </div>
 
     <div class="uniq-sizes">
-      <h2>Specificity chart</h2>
-      {{&specificityChart}}
+        <h2>Specificity chart</h2>
+        <div id="specificity-chart" data-series="{{specificityChart}}"></div>
     </div>
 
     <div class="uniq-sizes">
