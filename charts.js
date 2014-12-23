@@ -10,6 +10,8 @@ function drawSpecificityChart() {
         bar: { groupWidth: '100%' },
         hAxis: {textPosition: 'none'},
         vAxis: {textPosition: 'none', viewWindowMode: 'maximized'},
+        areaOpacity: 1,
+        lineWidth: 0,
         legend: {position: 'bottom'},
         isStacked: true,
         colors: ['#3366CC', '#109618', '#FF9900', '#DC3912']
@@ -23,7 +25,7 @@ function drawSpecificityChart() {
     });
     var data =  google.visualization.arrayToDataTable(series);
 
-    var chart = new google.visualization.ColumnChart(chartEl);
+    var chart = new google.visualization.AreaChart(chartEl);
 
     chart.draw(data, options);
 }
@@ -37,7 +39,8 @@ function drawComplexityChart() {
         hAxis: {textPosition: 'none'},
         vAxis: {textPosition: 'none', viewWindowMode: 'maximized'},
         legend: {position: 'none'},
-        isStacked: true,
+        areaOpacity: 1,
+        lineWidth: 0,
         colors: ['#3366CC']
     };
 
@@ -49,7 +52,7 @@ function drawComplexityChart() {
     });
     var data =  google.visualization.arrayToDataTable(series);
 
-    var chart = new google.visualization.ColumnChart(chartEl);
+    var chart = new google.visualization.AreaChart(chartEl);
 
     chart.draw(data, options);
 }
