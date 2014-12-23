@@ -18,9 +18,9 @@ function drawSpecificityChart() {
 
     var chartEl = document.getElementById('specificity-chart');
 
-    var series = [['', 'Element', 'Class', 'ID', '!important']];
+    var series = [['Selector', 'Element', 'Class', 'ID', '!important']];
     JSON.parse(chartEl.getAttribute("data-series")).forEach(function(item) {
-        series.push(['', item[3], item[2], item[1], item[0]]);
+        series.push(item);
     });
     var data =  google.visualization.arrayToDataTable(series);
 
@@ -44,9 +44,9 @@ function drawComplexityChart() {
 
     var chartEl = document.getElementById('complexity-chart');
 
-    var series = [['', 'Complexity']];
-    JSON.parse(chartEl.getAttribute("data-series")).forEach(function(v) {
-        series.push(['', v]);
+    var series = [['Selector', 'Complexity']];
+    JSON.parse(chartEl.getAttribute("data-series")).forEach(function(data) {
+        series.push(data);
     });
     var data =  google.visualization.arrayToDataTable(series);
 
