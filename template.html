@@ -28,6 +28,25 @@
     {{/colorStats}}
 {{/colorStats.length}}
 
+{{#gradientStats.length}}
+    <h1>Gradients</h1>
+    {{#gradientStats}}
+        {{#gradients.length}}
+        <div>
+        <h2>{{gradients.length}} {{title}}</h2>
+        <ul class="colors-grid">
+            {{#gradients}}
+            <li class="colors-grid-item" style="background: {{gradient}}">
+                {{count}}
+                <span class="colors-grid-hexcode">gradient</span>
+            </li>
+            {{/gradients}}
+        </ul>
+        </div>
+        {{/gradients.length}}
+    {{/gradientStats}}
+{{/gradientStats.length}}
+
 {{#sizeStats.length}}
     <h1>Sizes</h1>
     {{#sizeStats}}

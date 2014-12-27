@@ -3,6 +3,7 @@ var postcss = require("postcss");
 var mustache = require("mustache");
 var Iterator = require("./lib/Iterator");
 var colorStats = require("./lib/colorStats");
+var gradientStats = require("./lib/gradientStats");
 var sizeStats = require("./lib/sizeStats");
 var selectorStats = require("./lib/selectorStats");
 
@@ -17,12 +18,13 @@ if (templateFilename) {
     var template = fs.readFileSync(templateFilename, "utf8");
     var html = mustache.render(template, {
         colorStats: colorStats(iterator),
+        gradientStats: gradientStats(iterator),
         sizeStats: sizeStats(iterator),
         selectorStats: selectorStats(iterator),
     });
     console.log(html);
 }
 else {
-    console.log(selectorStats(iterator));
+    console.log(gradientStats(iterator));
 }
 
