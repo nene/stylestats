@@ -13,17 +13,20 @@
     <h1>Colors</h1>
     {{#colorStats}}
         {{#colors.length}}
-        <div>
-        <h2>{{colors.length}} {{title}}</h2>
-        <ul class="colors-grid">
-            {{#colors}}
-            <li class="colors-grid-item" style="background-color: {{color}}">
-                {{count}}
-                <span class="colors-grid-hexcode">{{color}}</span>
-            </li>
-            {{/colors}}
-        </ul>
-        </div>
+            <table class="style-table">
+                <tr class="style-table-h1">
+                    <th></th>
+                    <th class="style-values">{{title}}</th>
+                    <th class="style-count">{{colors.length}}</th>
+                </tr>
+                {{#colors}}
+                    <tr class="style-table-row">
+                        <td class="style-example" style="background-color: {{hexColor}}"></td>
+                        <td class="style-values">{{color}}</td>
+                        <td class="style-count">{{count}}</td>
+                    </tr>
+                {{/colors}}
+            </table>
         {{/colors.length}}
     {{/colorStats}}
 {{/colorStats.length}}
@@ -32,17 +35,20 @@
     <h1>Gradients</h1>
     {{#gradientStats}}
         {{#gradients.length}}
-        <div>
-        <h2>{{gradients.length}} {{title}}</h2>
-        <ul class="colors-grid">
-            {{#gradients}}
-            <li class="colors-grid-item" style="background: {{rawGradient}}">
-                {{count}}
-                <span class="colors-grid-hexcode">gradient</span>
-            </li>
-            {{/gradients}}
-        </ul>
-        </div>
+            <table class="style-table">
+                <tr class="style-table-h1">
+                    <th></th>
+                    <th class="style-values">{{title}}</th>
+                    <th class="style-count">{{gradients.length}}</th>
+                </tr>
+                {{#gradients}}
+                    <tr class="style-table-row">
+                        <td class="style-example" style="background: {{rawGradient}}"></td>
+                        <td class="style-values">{{rawGradient}}</td>
+                        <td class="style-count">{{count}}</td>
+                    </tr>
+                {{/gradients}}
+            </table>
         {{/gradients.length}}
     {{/gradientStats}}
 {{/gradientStats.length}}
@@ -50,33 +56,49 @@
 {{#sizeStats.length}}
     <h1>Sizes</h1>
     {{#sizeStats}}
-    <div>
-    <h2>{{total}} {{title}}</h2>
-        {{#groups}}
-            {{#values.length}}
-            <h3>{{values.length}} {{title}}</h3>
-            <ul>
-                {{#values}}
-                <li>{{value}} <span class="size-count">({{count}})</span></li>
-                {{/values}}
-            </ul>
-            {{/values.length}}
-        {{/groups}}
-        </div>
+        <table class="style-table">
+            <tr class="style-table-h1">
+                <th></th>
+                <th class="style-values">{{title}}</th>
+                <th class="style-count">{{total}}</th>
+            </tr>
+            {{#groups}}
+                {{#values.length}}
+                    <tr class="style-table-h2">
+                        <th></th>
+                        <th class="style-values">{{title}}</th>
+                        <th class="style-count">{{values.length}}</th>
+                    </tr>
+                    {{#values}}
+                        <tr class="style-table-row">
+                            <td class="style-example"></td>
+                            <td class="style-values">{{value}}</td>
+                            <td class="style-count">{{count}}</td>
+                        </tr>
+                    {{/values}}
+                {{/values.length}}
+            {{/groups}}
+        </table>
     {{/sizeStats}}
 {{/sizeStats.length}}
 
 {{#selectorStats}}
     <h1>{{count}} selectors</h1>
 
-    <div>
-      <h2>Selector types</h2>
-        <ul>
-            {{#types}}
-            <li>{{type}} <span class="size-count">({{count}})</span></li>
-            {{/types}}
-        </ul>
-    </div>
+    <table class="style-table">
+        <tr class="style-table-h1">
+            <th></th>
+            <th class="style-values">Selector type</th>
+            <th class="style-count"></th>
+        </tr>
+        {{#types}}
+            <tr class="style-table-row">
+                <td class="style-example"></td>
+                <td class="style-values">{{type}}</td>
+                <td class="style-count">{{count}}</td>
+            </tr>
+        {{/types}}
+    </table>
 
     <div class="uniq-sizes">
         <h2>Specificity chart</h2>

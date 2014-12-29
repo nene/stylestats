@@ -1,36 +1,58 @@
+/* Reset some styles */
+th {
+    font-weight: inherit;
+    text-align: left;
+}
+
+/* Base page styles */
+body {
+    color: #333;
+    background: #fdfdfd;
+    font: 14px / 1.3 "Helvetica Neue", Arial, sans-serif;
+}
+
 .content {
     max-width: 1200px;
     margin: 0 auto;
 }
 
-.colors-grid {
-    list-style: none;
-    overflow: auto;
+.style-table {
+    margin: 1em 0;
+    border-collapse: collapse;
+    width: 100%;
 }
-.colors-grid-item {
-    position: relative;
-    display: block;
-    float: left;
-    width: 100px;
-    height: 100px;
-    margin-bottom: 5px;
-    margin-right: 1px;
-    line-height: 100px;
-    text-align: center;
-    font-family: monospace;
-    font-size: 26px;
-    text-shadow: white 1px 1px 1px, white -1px -1px 1px, white -1px 1px 1px, white 1px -1px 1px;
+
+.style-table-row:nth-child(2n) {
+    background: #eee;
 }
-.colors-grid-hexcode {
-    position: absolute;
-    display: block;
-    font-size: 12px;
-    line-height: 14px;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background-color: white;
+.style-table-h1, .style-table-h2 {
+    color: #fdfdfd;
+    height: 25px;
 }
+.style-table-h1 {
+    background: #666;
+    font-weight: 400;
+}
+.style-table-h2 {
+    background: #888;
+    font-weight: 200;
+}
+
+.style-example {
+    width: 25px;
+    height: 25px;
+}
+
+.style-values {
+    padding: 0 1em;
+}
+
+.style-count {
+    width: 50px;
+    text-align: right;
+    padding: 0 1em;
+}
+
 
 .size-count {
     color: gray;
