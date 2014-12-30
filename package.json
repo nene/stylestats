@@ -12,5 +12,10 @@
     "postcss": "^3.0.7",
     "specificity": "^0.1.4",
     "tinycolor2": "^1.1.1"
+  },
+  "devDependencies": {
+    "browserify": "^8.0.2",
+    "gulp": "^3.8.10",
+    "vinyl-source-stream": "^1.0.0"
   }
 }

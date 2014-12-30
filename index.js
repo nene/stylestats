@@ -1,4 +1,4 @@
-var fs = require("fs");
+var $ = require("jquery");
 var postcss = require("postcss");
 var mustache = require("mustache");
 var Iterator = require("./lib/Iterator");
@@ -6,25 +6,29 @@ var colorStats = require("./lib/colorStats");
 var gradientStats = require("./lib/gradientStats");
 var sizeStats = require("./lib/sizeStats");
 var selectorStats = require("./lib/selectorStats");
+var renderCharts = require("./lib/renderCharts");
 
-var filename = process.argv[2];
-var templateFilename = process.argv[3];
+function generateStats(cssSource) {
+    var ast = postcss.parse(cssSource);
+    var iterator = new Iterator(ast);
 
-var cssSource = fs.readFileSync(filename, "utf8");
-var ast = postcss.parse(cssSource);
-var iterator = new Iterator(ast);
-
-if (templateFilename) {
-    var template = fs.readFileSync(templateFilename, "utf8");
-    var html = mustache.render(template, {
+    return {
         colorStats: colorStats(iterator),
         gradientStats: gradientStats(iterator),
         sizeStats: sizeStats(iterator),
         selectorStats: selectorStats(iterator),
+    };
+}
+
+$(document).ready(function(){
+    $.get("samples/xrebel.css", function(cssSource) {
+        $.get("template.html", function(templateSource) {
+            var html = mustache.render(templateSource, generateStats(cssSource));
+
+            $("#content").html(html);
+
+            renderCharts();
+        });
     });
-    console.log(html);
-}
-else {
-    console.log(gradientStats(iterator));
-}
+});
 
