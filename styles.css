@@ -16,6 +16,18 @@ body {
     margin: 0 auto;
 }
 
+.colors-grid {
+    overflow: auto;
+    width: 300px;
+    padding: 1px;
+    border: 1px solid #ccc;
+    border-radius: 2px;
+}
+.colors-grid-cell {
+    float: left;
+    border-radius: 1px;
+}
+
 .style-table {
     margin: 1em 0;
     border-collapse: collapse;
