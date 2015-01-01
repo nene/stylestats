@@ -16,6 +16,16 @@ body {
     margin: 0 auto;
 }
 
+/* a load mask */
+.load-mask {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: rgba(0,0,0, 0.3);
+}
+
 .colors-grid {
     overflow: auto;
     width: 300px;
