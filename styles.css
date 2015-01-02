@@ -11,9 +11,14 @@ body {
     font: 14px / 1.3 "Helvetica Neue", Arial, sans-serif;
 }
 
-.content {
-    max-width: 1200px;
-    margin: 0 auto;
+.stats-content {
+    width: calc(50% - 1em);
+    float: left;
+}
+
+.css-content {
+    width: calc(50% - 1em);
+    float: right;
 }
 
 /* a load mask */

@@ -22,9 +22,11 @@ function getCssFilename() {
 function refreshStats() {
     loadMask.show();
     $.get(getCssFilename(), function(cssSource) {
+        $("#css-content-code").text(cssSource);
+
         var html = mustache.render(templateSource, stats(cssSource));
 
-        $("#content").html(html);
+        $("#stats-content").html(html);
 
         renderCharts();
 
