@@ -5,17 +5,19 @@
   "private": true,
   "license": "MIT",
   "dependencies": {
-    "css-value-parser": "^1.0.0",
     "css-selector-parser": "^1.0.3",
+    "css-value-parser": "^1.0.0",
     "lodash": "^2.4.1",
     "mustache": "^0.8.2",
     "postcss": "^3.0.7",
+    "react": "^0.12.2",
     "specificity": "^0.1.4",
     "tinycolor2": "^1.1.1"
   },
   "devDependencies": {
     "browserify": "^8.0.2",
     "gulp": "^3.8.10",
+    "reactify": "^0.17.1",
     "vinyl-source-stream": "^1.0.0"
   }
 }

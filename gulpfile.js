@@ -1,9 +1,14 @@
 var gulp = require('gulp');
 var browserify = require('browserify');
 var source = require('vinyl-source-stream');
+var reactify = require('reactify');
 
 gulp.task('browserify', function() {
-    return browserify('./index.js')
+    return browserify({
+            entries:['./index.js'],
+            transform: [reactify],
+            extensions: ['.jsx']
+        })
         .bundle()
         //Pass desired output filename to vinyl-source-stream
         .pipe(source('stylestats.js'))
@@ -12,7 +17,7 @@ gulp.task('browserify', function() {
 });
 
 gulp.task('watch', ['browserify'], function() {
-    gulp.watch(['index.js', 'lib/**/*.js'], ['browserify']);
+    gulp.watch(['index.js', 'lib/**/*.js', 'lib/**/*.jsx'], ['browserify']);
 });
 
 gulp.task('default', ['browserify']);

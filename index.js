@@ -1,8 +1,9 @@
 var $ = require("jquery");
 var mustache = require("mustache");
 var stats = require("./lib/stats");
-var renderCharts = require("./lib/renderCharts");
 var LoadMask = require("./lib/LoadMask");
+var React = require("react");
+var Stats = require("./lib/cmp/Stats");
 
 var templateSource;
 var loadMask;
@@ -24,11 +25,12 @@ function refreshStats() {
     $.get(getCssFilename(), function(cssSource) {
         $("#css-content-code").text(cssSource);
 
-        var html = mustache.render(templateSource, stats(cssSource));
-
-        $("#stats-content").html(html);
-
-        renderCharts();
+        var statsData = stats(cssSource);
+        console.log(statsData.gridColors);
+        React.render(
+            React.createElement(Stats, {data: statsData}),
+            document.getElementById('stats-content')
+        );
 
         loadMask.hide();
     });
