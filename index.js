@@ -1,46 +1,36 @@
+require("angular");
 var $ = require("jquery");
+var _ = require("lodash");
 var mustache = require("mustache");
 var stats = require("./lib/stats");
 var renderCharts = require("./lib/renderCharts");
 var LoadMask = require("./lib/LoadMask");
 
-var templateSource;
-var loadMask;
-
-function afterTemplateLoaded(callback) {
-    $.get("template.html", function(tpl) {
-        templateSource = tpl;
-        callback();
-    });
-}
+angular.module("stylestats", [])
+.directive("mainView", function() {
+    return {
+        scope: {},
+        templateUrl: "template.html",
+        controller: function($scope, $http, $timeout) {
+            // Display loadmask
+            var loadMask = new LoadMask($(".load-mask"));
+            loadMask.show();
+            // Fetch stylesheet
+            $http.get(getCssFilename()).success(function(cssSource) {
+                // Calculate and render stats
+                $scope.cssSource = cssSource;
+                _($scope).assign(stats(cssSource));
+                // After dom finishes rendering
+                $timeout(function(){
+                    renderCharts();
+                    loadMask.hide();
+                });
+            });
+        }
+    };
+});
 
 function getCssFilename() {
     var matches = window.location.hash.match(/#!file=(.*)/);
     return matches[1] || "samples/xrebel.css";
 }
-
-function refreshStats() {
-    loadMask.show();
-    $.get(getCssFilename(), function(cssSource) {
-        $("#css-content-code").text(cssSource);
-
-        var html = mustache.render(templateSource, stats(cssSource));
-
-        $("#stats-content").html(html);
-
-        renderCharts();
-
-        loadMask.hide();
-    });
-}
-
-$(document).ready(function(){
-    loadMask = new LoadMask($(".load-mask"));
-
-    afterTemplateLoaded(function() {
-        refreshStats();
-
-        $(window).bind('hashchange', refreshStats);
-    });
-});
-

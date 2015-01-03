@@ -1,110 +1,101 @@
-{{#gridColors.length}}
-    <h1>{{gridColors.length}} unique colors</h1>
-    <div class="colors-grid">
-        {{#gridColors}}
-            <span class="colors-grid-cell" style="width: {{size}}px; height: {{size}}px; background-color: {{hexColor}}"></span>
-        {{/gridColors}}
+<div class="stats-content">
+    <div ng-if="gridColors.length">
+        <h1>{{gridColors.length}} unique colors</h1>
+        <div class="colors-grid">
+            <span
+                ng-repeat="color in gridColors"
+                class="colors-grid-cell"
+                style="width: {{color.size}}px; height: {{color.size}}px; background-color: {{color.hexColor}}"></span>
+        </div>
     </div>
-{{/gridColors.length}}
 
-{{#colorStats.length}}
-    <h1>Colors</h1>
-    {{#colorStats}}
-        {{#colors.length}}
-            <table class="style-table">
+    <div ng-if="colorStats.length">
+        <h1>Colors</h1>
+        <div ng-repeat="stats in colorStats">
+            <table class="style-table" ng-if="stats.colors.length">
                 <tr class="style-table-h1">
                     <th></th>
-                    <th class="style-values">{{title}}</th>
-                    <th class="style-count">{{colors.length}}</th>
+                    <th class="style-values">{{stats.title}}</th>
+                    <th class="style-count">{{stats.colors.length}}</th>
                 </tr>
-                {{#colors}}
-                    <tr class="style-table-row">
-                        <td class="style-example" style="background-color: {{hexColor}}"></td>
-                        <td class="style-values">{{variants}}</td>
-                        <td class="style-count">{{count}}</td>
-                    </tr>
-                {{/colors}}
+                <tr class="style-table-row" ng-repeat="color in stats.colors">
+                    <td class="style-example" style="background-color: {{color.hexColor}}"></td>
+                    <td class="style-values">{{color.variants}}</td>
+                    <td class="style-count">{{color.count}}</td>
+                </tr>
             </table>
-        {{/colors.length}}
-    {{/colorStats}}
-{{/colorStats.length}}
+        </div>
+    </div>
 
-{{#gradientStats.length}}
-    <h1>Gradients</h1>
-    {{#gradientStats}}
-        {{#gradients.length}}
-            <table class="style-table">
+    <div ng-if="gradientStats.length">
+        <h1>Gradients</h1>
+        <div ng-repeat="stats in gradientStats">
+            <table class="style-table" ng-if="stats.gradients.length">
                 <tr class="style-table-h1">
                     <th></th>
-                    <th class="style-values">{{title}}</th>
-                    <th class="style-count">{{gradients.length}}</th>
+                    <th class="style-values">{{stats.title}}</th>
+                    <th class="style-count">{{stats.gradients.length}}</th>
                 </tr>
-                {{#gradients}}
-                    <tr class="style-table-row">
-                        <td class="style-example" style="background: {{rawGradient}}"></td>
-                        <td class="style-values">{{rawGradient}}</td>
-                        <td class="style-count">{{count}}</td>
-                    </tr>
-                {{/gradients}}
+                <tr class="style-table-row" ng-repeat="grad in stats.gradients">
+                    <td class="style-example" style="background-color: {{grad.rawGradient}}"></td>
+                    <td class="style-values">{{grad.rawGradient}}</td>
+                    <td class="style-count">{{grad.count}}</td>
+                </tr>
             </table>
-        {{/gradients.length}}
-    {{/gradientStats}}
-{{/gradientStats.length}}
+        </div>
+    </div>
 
-{{#sizeStats.length}}
-    <h1>Sizes</h1>
-    {{#sizeStats}}
+    <div ng-if="sizeStats.length">
+        <h1>Sizes</h1>
+        <table class="style-table" ng-repeat="size in sizeStats">
+            <tr class="style-table-h1" ng-if="size.groups.length > 0">
+                <th></th>
+                <th class="style-values">{{size.title}}</th>
+                <th class="style-count">{{size.total}}</th>
+            </tr>
+            <tbody ng-repeat="group in size.groups">
+                <tr class="style-table-h2" ng-if="grop.values.length">
+                    <th></th>
+                    <th class="style-values">{{group.title}}</th>
+                    <th class="style-count">{{group.values.length}}</th>
+                </tr>
+                <tr class="style-table-row" ng-repeat="value in group.values">
+                    <td class="style-example"></td>
+                    <td class="style-values">{{value.value}}</td>
+                    <td class="style-count">{{value.count}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div ng-if="selectorStats">
+        <h1>{{selectorStats.count}} selectors</h1>
+
         <table class="style-table">
             <tr class="style-table-h1">
                 <th></th>
-                <th class="style-values">{{title}}</th>
-                <th class="style-count">{{total}}</th>
+                <th class="style-values">Selector type</th>
+                <th class="style-count"></th>
             </tr>
-            {{#groups}}
-                {{#values.length}}
-                    <tr class="style-table-h2">
-                        <th></th>
-                        <th class="style-values">{{title}}</th>
-                        <th class="style-count">{{values.length}}</th>
-                    </tr>
-                    {{#values}}
-                        <tr class="style-table-row">
-                            <td class="style-example"></td>
-                            <td class="style-values">{{value}}</td>
-                            <td class="style-count">{{count}}</td>
-                        </tr>
-                    {{/values}}
-                {{/values.length}}
-            {{/groups}}
-        </table>
-    {{/sizeStats}}
-{{/sizeStats.length}}
-
-{{#selectorStats}}
-    <h1>{{count}} selectors</h1>
-
-    <table class="style-table">
-        <tr class="style-table-h1">
-            <th></th>
-            <th class="style-values">Selector type</th>
-            <th class="style-count"></th>
-        </tr>
-        {{#types}}
-            <tr class="style-table-row">
+            <tr class="style-table-row" ng-repeat="type in selectorStats.types">
                 <td class="style-example"></td>
-                <td class="style-values">{{type}}</td>
-                <td class="style-count">{{count}}</td>
+                <td class="style-values">{{type.type}}</td>
+                <td class="style-count">{{type.count}}</td>
             </tr>
-        {{/types}}
-    </table>
+        </table>
 
-    <div class="uniq-sizes">
-        <h2>Specificity chart</h2>
-        <div id="specificity-chart" data-series='{{specificityChart}}'></div>
-    </div>
+        <div class="uniq-sizes">
+            <h2>Specificity chart</h2>
+            <div id="specificity-chart" data-series='{{selectorStats.specificityChart}}'></div>
+        </div>
 
-    <div class="uniq-sizes">
-        <h2>Complexity chart</h2>
-        <div id="complexity-chart" data-series='{{complexityChart}}'></div>
+        <div class="uniq-sizes">
+            <h2>Complexity chart</h2>
+            <div id="complexity-chart" data-series='{{selectorStats.complexityChart}}'></div>
+        </div>
     </div>
-{{/selectorStats}}
+</div>
+
+<div class="css-content">
+    <pre><code>{{cssSource}}</code></pre>
+</div>
