@@ -9,6 +9,18 @@
         </div>
     </div>
 
+    <div ng-if="selectorStats">
+        <div class="uniq-sizes">
+            <h2>Specificity chart</h2>
+            <div id="specificity-chart" data-series='{{selectorStats.specificityChart}}'></div>
+        </div>
+
+        <div class="uniq-sizes">
+            <h2>Complexity chart</h2>
+            <div id="complexity-chart" data-series='{{selectorStats.complexityChart}}'></div>
+        </div>
+    </div>
+
     <div ng-if="colorStats.length">
         <h1>Colors</h1>
         <div ng-repeat="stats in colorStats">
@@ -83,16 +95,6 @@
                 <td class="style-count">{{type.count}}</td>
             </tr>
         </table>
-
-        <div class="uniq-sizes">
-            <h2>Specificity chart</h2>
-            <div id="specificity-chart" data-series='{{selectorStats.specificityChart}}'></div>
-        </div>
-
-        <div class="uniq-sizes">
-            <h2>Complexity chart</h2>
-            <div id="complexity-chart" data-series='{{selectorStats.complexityChart}}'></div>
-        </div>
     </div>
 </div>
 
