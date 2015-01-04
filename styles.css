@@ -13,11 +13,15 @@ body {
 
 .stats-content {
     width: calc(50% - 1em);
+    height: 100vh;
+    overflow: scroll;
     float: left;
 }
 
 .css-content {
     width: calc(50% - 1em);
+    height: 100vh;
+    overflow: scroll;
     float: right;
 }
 
