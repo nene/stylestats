@@ -17,7 +17,7 @@ module.exports = React.createClass({
         return this.props.stats.filter(function(group){
             return group.colors.length > 0;
         }).map(function(group){
-            return <ColorTable title={group.title} colors={group.colors}/>;
-        });
+            return <ColorTable title={group.title} colors={group.colors} onSelect={this.props.onSelect}/>;
+        }, this);
     }
 });
