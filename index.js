@@ -1,9 +1,7 @@
 var $ = require("jquery");
-var mustache = require("mustache");
-var stats = require("./lib/stats");
 var LoadMask = require("./lib/LoadMask");
 var React = require("react");
-var Stats = require("./lib/cmp/Stats");
+var Page = require("./lib/cmp/Page");
 
 var templateSource;
 var loadMask;
@@ -23,13 +21,9 @@ function getCssFilename() {
 function refreshStats() {
     loadMask.show();
     $.get(getCssFilename(), function(cssSource) {
-        $("#css-content-code").text(cssSource);
-
-        var statsData = stats(cssSource);
-        console.log(statsData.gridColors);
         React.render(
-            React.createElement(Stats, {data: statsData}),
-            document.getElementById('stats-content')
+            React.createElement(Page, {css: cssSource}),
+            document.getElementById('content')
         );
 
         loadMask.hide();
