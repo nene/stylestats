@@ -3,10 +3,14 @@ var browserify = require('browserify');
 var source = require('vinyl-source-stream');
 var reactify = require('reactify');
 
+var reactifyES6 = function(file) {
+    return reactify(file, {es6: true});
+};
+
 gulp.task('browserify', function() {
     return browserify({
             entries:['./index.js'],
-            transform: [reactify],
+            transform: [reactifyES6],
             extensions: ['.jsx']
         })
         .bundle()
