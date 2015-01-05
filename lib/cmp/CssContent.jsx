@@ -6,7 +6,7 @@ module.exports = React.createClass({
     render: function() {
         return (
             <div className="css-content">
-                <pre><code>{this.props.css}</code></pre>
+                <pre><code dangerouslySetInnerHTML={{__html:this.props.css}} /></pre>
             </div>
         );
     }

@@ -9,7 +9,7 @@ module.exports = React.createClass({
 
     getInitialState: function() {
         return {
-            css: this.props.css
+            css: _.escape(this.props.css)
         };
     },
 
@@ -25,7 +25,22 @@ module.exports = React.createClass({
     },
 
     onSelect: function(declarations) {
-        var css = _(declarations).map("parent").uniq().invoke("toString").join("\n");
-        this.setState({css: css});
+        this.setState({css: this.declarationsToHtml(declarations)});
+    },
+
+    declarationsToHtml: function(declarations) {
+        var rules = _(declarations).map("parent").uniq().value();
+
+        return _(rules).map(function(rule){
+            return _.escape(rule.selector) + "{\n" + this.renderDecls(rule.childs, declarations) + "\n}";
+        }, this).join("\n");
+    },
+
+    renderDecls: function(allDecls, selectedDecls) {
+        return _(allDecls).map(function(decl) {
+            var declStr = _.escape(decl.toString().trim()) + ";"
+
+            return "    " + (_(selectedDecls).contains(decl) ? "<mark>"+declStr+"</mark>" : declStr);
+        }).join("\n");
     }
 });

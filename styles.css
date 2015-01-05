@@ -11,6 +11,11 @@ body {
     font: 14px / 1.3 "Helvetica Neue", Arial, sans-serif;
 }
 
+mark {
+    background: #94c11e;
+    border-radius: 3px;
+}
+
 .stats-content {
     width: calc(50% - 1em);
     height: 100vh;
