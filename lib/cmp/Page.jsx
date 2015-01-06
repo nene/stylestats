@@ -3,6 +3,10 @@ var React = require("react");
 var StatsContent = require("./StatsContent");
 var CssContent = require("./CssContent");
 
+/**
+ * Render the whole page.
+ * <Page css={string} stats={Object}/>
+ */
 module.exports = React.createClass({
     displayName: "Page",
 
@@ -15,7 +19,7 @@ module.exports = React.createClass({
     render: function() {
         return (
             <div className="page">
-                <StatsContent data={this.props.stats} onSelect={this.onSelect}/>
+                <StatsContent stats={this.props.stats} onSelect={this.onSelect}/>
                 <CssContent css={this.state.css}/>
             </div>
         );

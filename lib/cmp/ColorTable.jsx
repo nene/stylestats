@@ -1,5 +1,11 @@
 var React = require("react");
+var ColorVariant = require("./ColorVariant");
+var CountedColorVariant = require("./CountedColorVariant");
 
+/**
+ * Renders table of colors.
+ * <ColorTable title={string} colors={Object[]} onSelect={Function}/>
+ */
 module.exports = React.createClass({
     displayName: "ColorTable",
 
@@ -33,36 +39,15 @@ module.exports = React.createClass({
     },
 
     renderVariants: function(variants) {
-        var renderFn = (variants.length > 1) ? this.renderCountedVariant : this.renderPlainVariant;
-        var elements = variants.map(renderFn, this);
+        var elements = variants.map((group) => {
+            if (variants.length > 1) {
+                return <CountedColorVariant group={group} onSelect={this.props.onSelect}/>;
+            } else {
+                return <ColorVariant group={group} onSelect={this.props.onSelect}/>;
+            }
+        });
 
         return this.addSeparators(elements, ", ");
-    },
-
-    renderCountedVariant: function(group) {
-        return (
-            <span>
-                {this.renderPlainVariant(group)}
-                {" "}
-                ({group.decls.length})
-            </span>
-        );
-    },
-
-    renderPlainVariant: function(group) {
-        return <a href="#" onClick={this.createClickHandler(this.onVariantSelect, group)}>{group.value}</a>;
-    },
-
-    createClickHandler: function(fn, param) {
-        var boundFn = fn.bind(this, param);
-        return function(e){
-            e.preventDefault();
-            return boundFn();
-        };
-    },
-
-    onVariantSelect: function(group) {
-        this.props.onSelect(group.decls);
     },
 
     addSeparators: function(items, separator) {

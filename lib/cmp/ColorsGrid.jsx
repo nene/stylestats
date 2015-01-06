@@ -1,8 +1,13 @@
 var React = require("react");
 var ColorsGridCell = require("./ColorsGridCell");
 
+/**
+ * Renders summary-grid of colors.
+ * <ColorsGrid colors={Object[]}/>
+ */
 module.exports = React.createClass({
     displayName: "ColorsGrid",
+
     render: function() {
         return (
             <div>

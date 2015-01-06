@@ -1,6 +1,10 @@
 var React = require("react");
 var ColorTable = require("./ColorTable");
 
+/**
+ * Renders colors statistics view.
+ * <ColorStats stats={Object[]} onSelect={Function}/>
+ */
 module.exports = React.createClass({
     displayName: "ColorStats",
 

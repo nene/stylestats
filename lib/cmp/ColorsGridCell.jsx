@@ -1,7 +1,12 @@
 var React = require("react");
 
+/**
+ * Renders single cell in colors grid.
+ * <ColorsGridCell size={number} hexColor={string}/>
+ */
 module.exports = React.createClass({
     displayName: "ColorsGridCell",
+
     render: function() {
         var css = {
             width: this.props.size + "px",
