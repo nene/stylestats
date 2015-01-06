@@ -1,10 +1,11 @@
 var valueParser = require("css-value-parser");
 var isColorValue = require("./isColorValue");
 
-function Iterator(ast) {
-    this.ast = ast;
-}
-Iterator.prototype = {
+module.exports = class Iterator {
+    constructor(ast) {
+        this.ast = ast;
+    }
+
     /**
      * Iterates over each color value inside all property values.
      * @param {Function} fn Called with:
@@ -12,13 +13,13 @@ Iterator.prototype = {
      * - declaration object
      * - parent function object the value is in (optional)
      */
-    eachColor: function(fn) {
+    eachColor(fn) {
         this.eachValue(function(val, decl, parentValue) {
             if (isColorValue(val)) {
                 fn(valueParser.format(val), decl, parentValue);
             }
         }.bind(this));
-    },
+    }
 
     /**
      * Loops over each value inside all property values.
@@ -27,13 +28,13 @@ Iterator.prototype = {
      * - declaration object
      * - parent function object the value is in (optional)
      */
-    eachValue: function(fn) {
+    eachValue(fn) {
         this.eachDecl(function(decl) {
             decl.values.forEach(function(v) {
                 this.iterateValue(v, decl, undefined, fn);
             }.bind(this));
         }.bind(this));
-    },
+    }
 
     /**
      * Loops over each declaration.
@@ -43,13 +44,13 @@ Iterator.prototype = {
      * - values (array of parsed values)
      * - important (boolean)
      */
-    eachDecl: function(fn) {
+    eachDecl(fn) {
         this.ast.eachDecl(function(decl) {
             fn(decl);
         }.bind(this));
-    },
+    }
 
-    iterateValue: function(value, decl, parentValue, fn) {
+    iterateValue(value, decl, parentValue, fn) {
         fn(value, decl, parentValue);
 
         if (value.type === "function") {
@@ -57,13 +58,13 @@ Iterator.prototype = {
                 this.iterateValue(v, decl, value, fn);
             }.bind(this));
         }
-    },
+    }
 
     /**
      * Loops over each selector.
      * @param  {Function} fn Called with parsed selector AST node and Rule node.
      */
-    eachSelector: function(fn) {
+    eachSelector(fn) {
         this.ast.eachRule(function(rule) {
             rule.selectors.forEach(function(sel) {
                 if (!this.isPercentageSelector(sel) && sel.length > 0) {
@@ -71,11 +72,9 @@ Iterator.prototype = {
                 }
             }.bind(this));
         }.bind(this));
-    },
+    }
 
-    isPercentageSelector: function(selector) {
+    isPercentageSelector(selector) {
         return /^([0-9]+|[0-9]*.[0-9]+)%$/.test(selector);
-    },
+    }
 };
-
-module.exports = Iterator;
