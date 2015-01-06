@@ -3,16 +3,17 @@ var valueParser = require("css-value-parser");
 var Iterator = require("./Iterator");
 
 module.exports = {
-    parse: function(css) {
+    parse(css) {
         var ast = postcss.parse(css);
-        parseValues(ast);
+        this.parseValues(ast);
         return new Iterator(ast);
+    },
+
+    parseValues(ast) {
+        ast.eachDecl(function(decl) {
+            decl.values = valueParser.parse(decl.value);
+        });
     }
 };
 
-function parseValues(ast) {
-    ast.eachDecl(function(decl) {
-        decl.values = valueParser.parse(decl.value);
-    });
-}
 
