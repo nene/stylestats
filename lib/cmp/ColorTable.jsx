@@ -1,3 +1,4 @@
+var _ = require("lodash");
 var React = require("react");
 var ColorVariant = require("./ColorVariant");
 var CountedColorVariant = require("./CountedColorVariant");
@@ -44,12 +45,17 @@ module.exports = React.createClass({
 
             return (
                 <tr className="style-table-row">
-                    <td className="style-example" style={css}></td>
+                    <td className="style-example" style={css} onClick={this.onColorSelect.bind(this, color)}></td>
                     <td className="style-values">{this.renderVariants(color.variants)}</td>
                     <td className="style-count">{color.count}</td>
                 </tr>
             );
         }, this);
+    },
+
+    onColorSelect: function(color) {
+        var decls = _(color.variants).map("decls").flatten().value();
+        this.props.onSelect(decls);
     },
 
     renderVariants: function(variants) {
