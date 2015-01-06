@@ -9,17 +9,31 @@ var CountedColorVariant = require("./CountedColorVariant");
 module.exports = React.createClass({
     displayName: "ColorTable",
 
+    getInitialState: function() {
+        return {
+            expanded: false
+        };
+    },
+
     render: function() {
         return (
             <table className="style-table">
-                <tr className="style-table-h1">
+                <tr className="style-table-h1" onClick={this.expand}>
                     <th></th>
                     <th className="style-values">{this.props.title}</th>
                     <th className="style-count">{this.props.colors.length}</th>
                 </tr>
-                {this.renderRows()}
+                {this.optionallyRenderRows()}
             </table>
         );
+    },
+
+    expand: function() {
+        this.setState({expanded: !this.state.expanded});
+    },
+
+    optionallyRenderRows: function() {
+        return this.state.expanded ? this.renderRows() : [];
     },
 
     renderRows: function() {
