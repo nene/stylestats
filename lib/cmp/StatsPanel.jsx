@@ -16,7 +16,7 @@ module.exports = React.createClass({
 
         return (
             <div className="stats-panel">
-                <ColorsGrid colors={stats.gridColors}/>
+                <ColorsGrid colors={stats.gridColors} onSelect={this.props.onSelect}/>
                 <Chart title="Specificity chart" id="specificity-chart" series={stats.selectorStats.specificityChart}/>
                 <Chart title="Complexity chart" id="complexity-chart" series={stats.selectorStats.complexityChart}/>
                 <ColorStats stats={stats.colorStats} onSelect={this.props.onSelect}/>

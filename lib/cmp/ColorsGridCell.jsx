@@ -2,7 +2,7 @@ var React = require("react");
 
 /**
  * Renders single cell in colors grid.
- * <ColorsGridCell size={number} hexColor={string}/>
+ * <ColorsGridCell size={number} hexColor={string} onClick={Function}/>
  */
 module.exports = React.createClass({
     displayName: "ColorsGridCell",
@@ -15,7 +15,7 @@ module.exports = React.createClass({
         };
 
         return (
-            <span className="colors-grid-cell" style={css}></span>
+            <span className="colors-grid-cell" style={css} onClick={this.props.onClick}></span>
         );
     }
 });

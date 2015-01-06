@@ -3,7 +3,7 @@ var ColorsGridCell = require("./ColorsGridCell");
 
 /**
  * Renders summary-grid of colors.
- * <ColorsGrid colors={Object[]}/>
+ * <ColorsGrid colors={Object[]} onSelect={Function}/>
  */
 module.exports = React.createClass({
     displayName: "ColorsGrid",
@@ -21,7 +21,15 @@ module.exports = React.createClass({
 
     renderCells: function() {
         return this.props.colors.map(function(color){
-            return <ColorsGridCell size={color.size} hexColor={color.hexColor} key={color.hexColor} />
-        });
+            return <ColorsGridCell
+                        size={color.size}
+                        hexColor={color.hexColor}
+                        key={color.hexColor}
+                        onClick={this.onColorSelect.bind(this, color)} />
+        }, this);
+    },
+
+    onColorSelect: function(color) {
+        this.props.onSelect(color.decls);
     }
 });
