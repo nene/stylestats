@@ -2,6 +2,7 @@ var $ = require("jquery");
 var LoadMask = require("./lib/LoadMask");
 var React = require("react");
 var Page = require("./lib/cmp/Page");
+var stats = require("./lib/stats");
 
 var templateSource;
 var loadMask;
@@ -22,7 +23,7 @@ function refreshStats() {
     loadMask.show();
     $.get(getCssFilename(), function(cssSource) {
         React.render(
-            React.createElement(Page, {css: cssSource}),
+            React.createElement(Page, {css: cssSource, stats: stats(cssSource)}),
             document.getElementById('content')
         );
 

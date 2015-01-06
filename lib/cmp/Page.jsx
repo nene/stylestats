@@ -1,6 +1,5 @@
 var _ = require("lodash");
 var React = require("react");
-var stats = require("../stats");
 var StatsContent = require("./StatsContent");
 var CssContent = require("./CssContent");
 
@@ -14,11 +13,9 @@ module.exports = React.createClass({
     },
 
     render: function() {
-        var statsData = stats(this.props.css);
-
         return (
             <div className="page">
-                <StatsContent data={statsData} onSelect={this.onSelect}/>
+                <StatsContent data={this.props.stats} onSelect={this.onSelect}/>
                 <CssContent css={this.state.css}/>
             </div>
         );
