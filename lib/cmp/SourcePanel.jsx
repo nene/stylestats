@@ -2,14 +2,14 @@ var React = require("react");
 
 /**
  * Renders CSS source panel.
- * <CssContent css={string}/>
+ * <SourcePanel css={string}/>
  */
 module.exports = React.createClass({
-    displayName: "CssContent",
+    displayName: "SourcePanel",
 
     render: function() {
         return (
-            <div className="css-content">
+            <div className="source-panel">
                 <pre><code dangerouslySetInnerHTML={{__html:this.props.css}} /></pre>
             </div>
         );

@@ -1,7 +1,7 @@
 var _ = require("lodash");
 var React = require("react");
-var StatsContent = require("./StatsContent");
-var CssContent = require("./CssContent");
+var StatsPanel = require("./StatsPanel");
+var SourcePanel = require("./SourcePanel");
 
 /**
  * Render the whole page.
@@ -19,8 +19,8 @@ module.exports = React.createClass({
     render: function() {
         return (
             <div className="page">
-                <StatsContent stats={this.props.stats} onSelect={this.onSelect}/>
-                <CssContent css={this.state.css}/>
+                <StatsPanel stats={this.props.stats} onSelect={this.onSelect}/>
+                <SourcePanel css={this.state.css}/>
             </div>
         );
     },

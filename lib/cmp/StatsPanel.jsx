@@ -6,16 +6,16 @@ var renderCharts = require("../renderCharts");
 
 /**
  * Renders statistics panel.
- * <StatsContent stats={Object} onSelect={Function}/>
+ * <StatsPanel stats={Object} onSelect={Function}/>
  */
 module.exports = React.createClass({
-    displayName: "StatsContent",
+    displayName: "StatsPanel",
 
     render: function() {
         var stats = this.props.stats;
 
         return (
-            <div className="stats-content">
+            <div className="stats-panel">
                 <ColorsGrid colors={stats.gridColors}/>
                 <Chart title="Specificity chart" id="specificity-chart" series={stats.selectorStats.specificityChart}/>
                 <Chart title="Complexity chart" id="complexity-chart" series={stats.selectorStats.complexityChart}/>
