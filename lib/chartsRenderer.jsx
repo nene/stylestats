@@ -1,12 +1,9 @@
-module.exports = function() {
-    var WIDTH = 556;
-    var HEIGHT = 160;
-    var AREA_HEIGHT = 125;
+var WIDTH = 556;
+var HEIGHT = 160;
+var AREA_HEIGHT = 125;
 
-    drawSpecificityChart();
-    drawComplexityChart();
-
-    function drawSpecificityChart() {
+module.exports = {
+    renderSpecificity() {
         var options = {
             width: WIDTH,
             height: HEIGHT,
@@ -31,9 +28,9 @@ module.exports = function() {
         var chart = new google.visualization.AreaChart(chartEl);
 
         chart.draw(data, options);
-    }
+    },
 
-    function drawComplexityChart() {
+    renderComplexity() {
         var options = {
             width: WIDTH,
             height: HEIGHT,
