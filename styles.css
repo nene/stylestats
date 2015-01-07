@@ -53,9 +53,14 @@ mark {
     border-radius: 2px;
 }
 .colors-grid-cell {
+    position: relative;
     float: left;
-    border-radius: 1px;
+    border-radius: 100%;
     cursor: pointer;
+    box-shadow: 1px 1px 1px 1px rgba(0,0,0, 0.2);
+}
+.colors-grid-cell:hover {
+    box-shadow: 1px 1px 1px 1px rgba(0,0,0, 0.5);
 }
 
 .chart-title {

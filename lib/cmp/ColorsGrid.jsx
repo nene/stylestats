@@ -23,6 +23,7 @@ module.exports = React.createClass({
         return this.props.colors.map(function(color){
             return <ColorsGridCell
                         size={color.size}
+                        scale={color.scale}
                         hexColor={color.hexColor}
                         key={color.hexColor}
                         onClick={this.onColorSelect.bind(this, color)} />
