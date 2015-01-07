@@ -47,10 +47,8 @@ mark {
 
 .colors-grid {
     overflow: auto;
-    width: 300px;
-    padding: 1px;
-    border: 1px solid #ccc;
-    border-radius: 2px;
+    padding: 30px;
+    margin: 0 auto;
 }
 .colors-grid-cell {
     position: relative;
