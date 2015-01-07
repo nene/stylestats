@@ -23,7 +23,8 @@ module.exports = React.createClass({
                 <Chart title="Complexity chart" id="complexity-chart"
                     series={stats.selectorStats.complexityChart}
                     onRender={chartsRenderer.renderComplexity}/>
-                <ColorStats stats={stats.colorStats} onSelect={this.props.onSelect}/>
+                <ColorStats title="Colors" stats={stats.colorStats} onSelect={this.props.onSelect}/>
+                <ColorStats title="Gradients" stats={stats.gradientStats} onSelect={this.props.onSelect}/>
             </div>
         );
     }

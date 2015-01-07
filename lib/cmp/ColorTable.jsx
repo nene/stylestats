@@ -40,7 +40,7 @@ module.exports = React.createClass({
     renderRows: function() {
         return this.props.colors.map(function(color) {
             var css = {
-                backgroundColor: color.hexColor
+                background: color.hexColor
             };
 
             return (

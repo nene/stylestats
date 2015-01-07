@@ -3,7 +3,7 @@ var ColorTable = require("./ColorTable");
 
 /**
  * Renders colors statistics view.
- * <ColorStats stats={Object[]} onSelect={Function}/>
+ * <ColorStats title={string} stats={Object[]} onSelect={Function}/>
  */
 module.exports = React.createClass({
     displayName: "ColorStats",
@@ -11,7 +11,7 @@ module.exports = React.createClass({
     render: function() {
         return (
             <div className="color-stats">
-                <h1>Colors</h1>
+                <h1>{this.props.title}</h1>
                 {this.renderTables()}
             </div>
         );
