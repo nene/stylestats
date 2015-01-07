@@ -55,6 +55,11 @@ mark {
 .colors-grid-cell {
     float: left;
     border-radius: 1px;
+    cursor: pointer;
+}
+
+.chart-title {
+    cursor: pointer;
 }
 
 .style-table {
@@ -73,6 +78,7 @@ mark {
 .style-table-h1 {
     background: #666;
     font-weight: 400;
+    cursor: pointer;
 }
 .style-table-h2 {
     background: #888;
@@ -82,6 +88,7 @@ mark {
 .style-example {
     width: 25px;
     height: 25px;
+    cursor: pointer;
 }
 
 .style-values {
