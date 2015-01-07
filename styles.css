@@ -61,6 +61,7 @@ mark {
 }
 .colors-grid-cell:hover {
     box-shadow: 1px 1px 1px 1px rgba(0,0,0, 0.5);
+    z-index: 105 !important; /* To override the inline style */
 }
 
 .chart-title {
