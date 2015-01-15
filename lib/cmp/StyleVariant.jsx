@@ -1,12 +1,12 @@
 var React = require("react");
 
 /**
- * Renders a simple link with color name and registers a
+ * Renders a simple link with style name and registers a
  * click callback.
- * <ColorVariant group={Object} onSelect={Function}/>
+ * <StyleVariant group={Object} onSelect={Function}/>
  */
 module.exports = React.createClass({
-    displayName: "ColorVariant",
+    displayName: "StyleVariant",
 
     render: function() {
         var onClickHandler = this.createOnClickHandler(this.onSelect, this.props.group);

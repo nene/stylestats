@@ -1,14 +1,14 @@
 var _ = require("lodash");
 var React = require("react");
-var ColorVariant = require("./ColorVariant");
-var CountedColorVariant = require("./CountedColorVariant");
+var StyleVariant = require("./StyleVariant");
+var CountedStyleVariant = require("./CountedStyleVariant");
 
 /**
- * Renders table of colors.
- * <ColorTable title={string} colors={Object[]} onSelect={Function}/>
+ * Renders table with style stats.
+ * <StyleTable title={string} colors={Object[]} onSelect={Function}/>
  */
 module.exports = React.createClass({
-    displayName: "ColorTable",
+    displayName: "StyleTable",
 
     getInitialState: function() {
         return {
@@ -61,9 +61,9 @@ module.exports = React.createClass({
     renderVariants: function(variants) {
         var elements = variants.map((group) => {
             if (variants.length > 1) {
-                return <CountedColorVariant group={group} onSelect={this.props.onSelect}/>;
+                return <CountedStyleVariant group={group} onSelect={this.props.onSelect}/>;
             } else {
-                return <ColorVariant group={group} onSelect={this.props.onSelect}/>;
+                return <StyleVariant group={group} onSelect={this.props.onSelect}/>;
             }
         });
 

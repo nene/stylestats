@@ -1,16 +1,16 @@
 var React = require("react");
-var ColorTable = require("./ColorTable");
+var StyleTable = require("./StyleTable");
 
 /**
- * Renders colors statistics view.
- * <ColorStats title={string} stats={Object[]} onSelect={Function}/>
+ * Renders styles statistics view.
+ * <StyleStats title={string} stats={Object[]} onSelect={Function}/>
  */
 module.exports = React.createClass({
-    displayName: "ColorStats",
+    displayName: "StyleStats",
 
     render: function() {
         return (
-            <div className="color-stats">
+            <div className="style-stats">
                 <h1>{this.props.title}</h1>
                 {this.renderTables()}
             </div>
@@ -21,7 +21,7 @@ module.exports = React.createClass({
         return this.props.stats.filter(function(group){
             return group.colors.length > 0;
         }).map(function(group){
-            return <ColorTable title={group.title} colors={group.colors} onSelect={this.props.onSelect}/>;
+            return <StyleTable title={group.title} colors={group.colors} onSelect={this.props.onSelect}/>;
         }, this);
     }
 });
