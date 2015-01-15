@@ -9,23 +9,15 @@ module.exports = React.createClass({
     displayName: "StyleVariant",
 
     render: function() {
-        var onClickHandler = this.createOnClickHandler(this.onSelect, this.props.group);
         return (
-            <a href="#" onClick={onClickHandler}>
+            <a href="#" onClick={this.onClick}>
                 {this.props.group.value}
             </a>
         );
     },
 
-    createOnClickHandler: function(fn, param) {
-        var boundFn = fn.bind(this, param);
-        return function(e){
-            e.preventDefault();
-            return boundFn();
-        };
-    },
-
-    onSelect: function(group) {
-        this.props.onSelect(group.decls);
+    onClick: function(e) {
+        e.preventDefault();
+        this.props.onSelect(this.props.group.decls);
     }
 });
