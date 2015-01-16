@@ -17,6 +17,7 @@ mark {
     border-radius: 3px;
 }
 
+/* Left-side statistics panel */
 .stats-panel {
     box-sizing: border-box;
     width: calc(50% - 1em);
@@ -26,6 +27,7 @@ mark {
     float: left;
 }
 
+/* Right-side CSS source code panel */
 .source-panel {
     box-sizing: border-box;
     width: calc(50% - 1em);
@@ -35,7 +37,7 @@ mark {
     float: right;
 }
 
-/* a load mask */
+/* Load mask covering the whole page */
 .load-mask {
     position: absolute;
     top: 0;
@@ -45,68 +47,63 @@ mark {
     background: rgba(0,0,0, 0.3);
 }
 
+/* Grid for overview of all colors */
 .colors-grid {
     overflow: auto;
     padding: 30px;
     margin: 0 auto;
 }
-.colors-grid-cell {
+.colors-grid__cell {
     position: relative;
     float: left;
     border-radius: 100%;
     cursor: pointer;
     box-shadow: 1px 1px 1px 1px rgba(0,0,0, 0.2);
 }
-.colors-grid-cell:hover {
+.colors-grid__cell:hover {
     box-shadow: 1px 1px 1px 1px rgba(0,0,0, 0.5);
     z-index: 105 !important; /* To override the inline style */
 }
 
-.chart-title {
+/* Specificity and Complexity charts */
+.chart {
+}
+.chart__title {
     cursor: pointer;
 }
 
+/* Style statistics table */
 .style-table {
     margin: 1em 0;
     border-collapse: collapse;
     width: 100%;
 }
-
 .style-table-row:nth-child(2n) {
     background: #eee;
 }
-.style-table-h1, .style-table-h2 {
+.style-table__h1, .style-table__h2 {
     color: #fdfdfd;
     height: 25px;
 }
-.style-table-h1 {
+.style-table__h1 {
     background: #666;
     font-weight: 400;
     cursor: pointer;
 }
-.style-table-h2 {
+.style-table__h2 {
     background: #888;
     font-weight: 200;
 }
-
-.style-example {
+.style-table__example {
     width: 25px;
     height: 25px;
     cursor: pointer;
 }
-
-.style-values {
+.style-table__values {
     padding: 0 1em;
 }
-
-.style-count {
+.style-table__count {
     width: 50px;
     text-align: right;
     padding: 0 1em;
-}
-
-
-.size-count {
-    color: gray;
-    font-size: 12px;
 }

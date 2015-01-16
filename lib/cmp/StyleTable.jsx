@@ -19,10 +19,10 @@ module.exports = React.createClass({
     render: function() {
         return (
             <table className="style-table">
-                <tr className="style-table-h1" onClick={this.expand}>
+                <tr className="style-table__h1" onClick={this.expand}>
                     <th></th>
-                    <th className="style-values">{this.props.title}</th>
-                    <th className="style-count">{this.props.colors.length}</th>
+                    <th className="style-table__values">{this.props.title}</th>
+                    <th className="style-table__count">{this.props.colors.length}</th>
                 </tr>
                 {this.optionallyRenderRows()}
             </table>
@@ -44,10 +44,10 @@ module.exports = React.createClass({
             };
 
             return (
-                <tr className="style-table-row">
-                    <td className="style-example" style={css} onClick={this.onColorSelect.bind(this, color)}></td>
-                    <td className="style-values">{this.renderVariants(color.variants)}</td>
-                    <td className="style-count">{color.count}</td>
+                <tr className="style-table__row">
+                    <td className="style-table__example" style={css} onClick={this.onColorSelect.bind(this, color)}></td>
+                    <td className="style-table__values">{this.renderVariants(color.variants)}</td>
+                    <td className="style-table__count">{color.count}</td>
                 </tr>
             );
         }, this);

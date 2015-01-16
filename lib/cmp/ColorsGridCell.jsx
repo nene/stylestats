@@ -30,7 +30,7 @@ module.exports = React.createClass({
         };
 
         return (
-            <span className="colors-grid-cell" style={css} onClick={this.props.onClick}></span>
+            <span className="colors-grid__cell" style={css} onClick={this.props.onClick}></span>
         );
     }
 });

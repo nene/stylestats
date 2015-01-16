@@ -16,8 +16,8 @@ module.exports = React.createClass({
 
     render: function() {
         return (
-            <div className="uniq-sizes">
-                <h2 className="chart-title" onClick={this.toggle}>{this.props.title}</h2>
+            <div className="chart">
+                <h2 className="chart__title" onClick={this.toggle}>{this.props.title}</h2>
                 {this.renderRawChart()}
             </div>
         );
