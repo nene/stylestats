@@ -14,7 +14,6 @@ module.exports = React.createClass({
     },
 
     componentDidMount: function() {
-        console.log("componentDidMount: "+this.props.id);
         this.props.onRender();
     }
 

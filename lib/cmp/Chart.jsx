@@ -1,5 +1,6 @@
-var React = require("react");
+var React = require("react/addons");
 var RawChart = require("./RawChart");
+var ReactCSSTransitionGroup = React.addons.CSSTransitionGroup;
 
 /**
  * Renders container for Specificity or Complexity chart.
@@ -15,17 +16,23 @@ module.exports = React.createClass({
     },
 
     render: function() {
+        var transitionGroup = (
+            <ReactCSSTransitionGroup transitionName="chart">
+                {this.renderRawChart()}
+            </ReactCSSTransitionGroup>
+        );
+
         return (
             <div className="chart">
                 <h2 className="chart__title" onClick={this.toggle}>{this.props.title}</h2>
-                {this.renderRawChart()}
+                {transitionGroup}
             </div>
         );
     },
 
     renderRawChart: function() {
         if (this.state.expanded) {
-            return <RawChart id={this.props.id} series={this.props.series} onRender={this.props.onRender}/>;
+            return <RawChart key={this.props.id} id={this.props.id} series={this.props.series} onRender={this.props.onRender}/>;
         }
         else {
             return [];
