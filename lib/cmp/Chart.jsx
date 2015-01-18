@@ -17,7 +17,7 @@ module.exports = React.createClass({
 
     render: function() {
         var transitionGroup = (
-            <ReactCSSTransitionGroup transitionName="chart">
+            <ReactCSSTransitionGroup transitionName="transition">
                 {this.renderRawChart()}
             </ReactCSSTransitionGroup>
         );

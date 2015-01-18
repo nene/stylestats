@@ -27,7 +27,7 @@ module.exports = React.createClass({
                         <th className="style-table__count">{this.props.colors.length}</th>
                     </tr>
                 </thead>
-                <ReactCSSTransitionGroup component="tbody" transitionName="chart">
+                <ReactCSSTransitionGroup component="tbody" transitionName="transition">
                     {this.optionallyRenderRows()}
                 </ReactCSSTransitionGroup>
             </table>
