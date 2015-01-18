@@ -65,9 +65,19 @@ mark {
     z-index: 105 !important; /* To override the inline style */
 }
 
-/* Specificity and Complexity charts */
-.chart__title {
-    cursor: pointer;
+/* Groupings of stats */
+.group__title {
+    font-weight: normal;
+    font-size: 1em;
+}
+.group__link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    border-radius: 3px;
+}
+.group__link:hover {
+    background: #eee;
 }
 
 /* Style statistics table */

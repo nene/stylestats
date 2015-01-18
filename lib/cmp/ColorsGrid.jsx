@@ -1,4 +1,5 @@
 var React = require("react");
+var Group = require("./Group");
 var ColorsGridCell = require("./ColorsGridCell");
 
 /**
@@ -9,13 +10,13 @@ module.exports = React.createClass({
     displayName: "ColorsGrid",
 
     render: function() {
+        var title = this.props.colors.length + " unique colors";
         return (
-            <div>
-                <h1>{this.props.colors.length} unique colors</h1>
+            <Group title={title}>
                 <div className="colors-grid">
                     {this.renderCells()}
                 </div>
-            </div>
+            </Group>
         );
     },
 

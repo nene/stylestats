@@ -1,5 +1,6 @@
 var React = require("react");
 var StyleTable = require("./StyleTable");
+var Group = require("./Group");
 
 /**
  * Renders styles statistics view.
@@ -10,10 +11,9 @@ module.exports = React.createClass({
 
     render: function() {
         return (
-            <div className="style-stats">
-                <h1>{this.props.title}</h1>
+            <Group title={this.props.title}>
                 {this.renderTables()}
-            </div>
+            </Group>
         );
     },
 
