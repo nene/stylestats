@@ -1,5 +1,6 @@
 var _ = require("lodash");
-var React = require("react");
+var React = require("react/addons");
+var ReactCSSTransitionGroup = React.addons.CSSTransitionGroup;
 var StyleVariant = require("./StyleVariant");
 var CountedStyleVariant = require("./CountedStyleVariant");
 
@@ -19,12 +20,16 @@ module.exports = React.createClass({
     render: function() {
         return (
             <table className="style-table">
-                <tr className="style-table__h1" onClick={this.expand}>
-                    <th></th>
-                    <th className="style-table__values">{this.props.title}</th>
-                    <th className="style-table__count">{this.props.colors.length}</th>
-                </tr>
-                {this.optionallyRenderRows()}
+                <thead>
+                    <tr className="style-table__h1" onClick={this.expand}>
+                        <th></th>
+                        <th className="style-table__values">{this.props.title}</th>
+                        <th className="style-table__count">{this.props.colors.length}</th>
+                    </tr>
+                </thead>
+                <ReactCSSTransitionGroup component="tbody" transitionName="chart">
+                    {this.optionallyRenderRows()}
+                </ReactCSSTransitionGroup>
             </table>
         );
     },
@@ -34,7 +39,12 @@ module.exports = React.createClass({
     },
 
     optionallyRenderRows: function() {
-        return this.state.expanded ? this.renderRows() : [];
+        if (this.state.expanded) {
+            return this.renderRows();
+        }
+        else {
+            return [];
+        }
     },
 
     renderRows: function() {
@@ -44,7 +54,7 @@ module.exports = React.createClass({
             };
 
             return (
-                <tr className="style-table__row">
+                <tr className="style-table__row" key={color.hexColor}>
                     <td className="style-table__example" style={css} onClick={this.onColorSelect.bind(this, color)}></td>
                     <td className="style-table__values">{this.renderVariants(color.variants)}</td>
                     <td className="style-table__count">{color.count}</td>

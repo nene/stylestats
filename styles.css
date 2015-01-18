@@ -70,18 +70,18 @@ mark {
     cursor: pointer;
 }
 .chart-enter {
-    opacity: 0.01;
-    transition: opacity .5s ease-in;
+    opacity: 0;
+    transition: opacity 0.5s ease-in;
 }
 .chart-enter.chart-enter-active {
     opacity: 1;
 }
 .chart-leave {
     opacity: 1;
-    transition: opacity .5s ease-in;
+    transition: opacity 0.5s ease-in;
 }
 .chart-leave.chart-leave-active {
-    opacity: 0.01;
+    opacity: 0;
 }
 
 /* Style statistics table */
