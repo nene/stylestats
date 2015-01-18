@@ -19,9 +19,9 @@ module.exports = React.createClass({
 
     renderTables: function() {
         return this.props.stats.filter(function(group){
-            return group.colors.length > 0;
+            return group.styles.length > 0;
         }).map(function(group){
-            return <StyleTable title={group.title} colors={group.colors} onSelect={this.props.onSelect}/>;
+            return <StyleTable title={group.title} styles={group.styles} onSelect={this.props.onSelect}/>;
         }, this);
     }
 });

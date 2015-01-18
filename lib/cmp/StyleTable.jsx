@@ -6,7 +6,7 @@ var CountedStyleVariant = require("./CountedStyleVariant");
 
 /**
  * Renders table with style stats.
- * <StyleTable title={string} colors={Object[]} onSelect={Function}/>
+ * <StyleTable title={string} styles={Object[]} onSelect={Function}/>
  */
 module.exports = React.createClass({
     displayName: "StyleTable",
@@ -24,7 +24,7 @@ module.exports = React.createClass({
                     <tr className="style-table__h1" onClick={this.expand}>
                         <th></th>
                         <th className="style-table__values">{this.props.title}</th>
-                        <th className="style-table__count">{this.props.colors.length}</th>
+                        <th className="style-table__count">{this.props.styles.length}</th>
                     </tr>
                 </thead>
                 <ReactCSSTransitionGroup component="tbody" transitionName="transition">
@@ -48,23 +48,23 @@ module.exports = React.createClass({
     },
 
     renderRows: function() {
-        return this.props.colors.map(function(color) {
+        return this.props.styles.map(function(style) {
             var css = {
-                background: color.hexColor
+                background: style.backgroundStyle
             };
 
             return (
-                <tr className="style-table__row" key={color.hexColor}>
-                    <td className="style-table__example" style={css} onClick={this.onColorSelect.bind(this, color)}></td>
-                    <td className="style-table__values">{this.renderVariants(color.variants)}</td>
-                    <td className="style-table__count">{color.count}</td>
+                <tr className="style-table__row" key={style.backgroundStyle}>
+                    <td className="style-table__example" style={css} onClick={this.onStyleSelect.bind(this, style)}></td>
+                    <td className="style-table__values">{this.renderVariants(style.variants)}</td>
+                    <td className="style-table__count">{style.count}</td>
                 </tr>
             );
         }, this);
     },
 
-    onColorSelect: function(color) {
-        var decls = _(color.variants).map("decls").flatten().value();
+    onStyleSelect: function(style) {
+        var decls = _(style.variants).map("decls").flatten().value();
         this.props.onSelect(decls);
     },
 
