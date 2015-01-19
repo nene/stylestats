@@ -45,7 +45,6 @@ module.exports = React.createClass({
 
     toggle: function(event) {
         event.preventDefault();
-        console.log("toggle");
         this.setState({expanded: !this.state.expanded});
     }
 });

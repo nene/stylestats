@@ -20,7 +20,7 @@ module.exports = React.createClass({
     renderRows: function() {
         return this.props.groups.map(function(group) {
             return (
-                <Group title={group.title} count={group.values.length}></Group>
+                <Group key={group.title} title={group.title} count={group.values.length}></Group>
             );
         }, this);
     },

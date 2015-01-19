@@ -21,7 +21,7 @@ module.exports = React.createClass({
         return this.props.stats.filter(function(stat){
             return stat.groups.length > 0;
         }).map(function(stat){
-            return <GroupedStyleTable title={stat.title} total={stat.total}
+            return <GroupedStyleTable key={stat.title} title={stat.title} total={stat.total}
                         groups={stat.groups} onSelect={this.props.onSelect}/>;
         }, this);
     }
