@@ -4,25 +4,25 @@
     border-collapse: collapse;
     width: 100%;
 }
-.style-table-row:nth-child(2n) {
-    background: #eee;
+.style-table__row:nth-child(2n) {
+    background: $row-alternate-bg-color;
 }
 .style-table__h1, .style-table__h2 {
-    color: #fdfdfd;
-    height: 25px;
+    color: $base-bg-color;
+    height: $example-size;
 }
 .style-table__h1 {
-    background: #666;
+    background: $row-h1-bg-color;
     font-weight: 400;
     cursor: pointer;
 }
 .style-table__h2 {
-    background: #888;
+    background: $row-h2-bg-color;
     font-weight: 200;
 }
 .style-table__example {
-    width: 25px;
-    height: 25px;
+    width: $example-size;
+    height: $example-size;
     cursor: pointer;
 }
 .style-table__values {
