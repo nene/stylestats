@@ -1,19 +1,33 @@
 /* Groupings of stats */
 .group__title {
-    font-weight: normal;
-    font-size: 1em;
     display: table;
     width: 100%;
+    border-radius: 3px;
+    font-weight: normal;
+    font-size: 1em;
+
+    &:hover {
+       background: $row-alternate-bg-color;
+    }
 }
-.group__title:hover {
-    background: $row-alternate-bg-color;
-}
+
 .group__link {
+    display: table-cell;
     text-decoration: none;
     color: inherit;
-    display: table-cell;
-    border-radius: 3px;
+
+    &::before {
+        content: "\25B6"; // Black Right-Pointing Triangle
+        color: $row-h2-bg-color;
+        padding: 0 0.25em;
+        display: inline-block;
+        transition: transform 0.1s ease-in;
+    }
 }
+.group__link--expanded::before {
+    transform: rotate(90deg);
+}
+
 .group__count {
     display: table-cell;
     text-align: right;

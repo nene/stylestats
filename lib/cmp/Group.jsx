@@ -1,5 +1,5 @@
 var React = require("react/addons");
-var ReactCSSTransitionGroup = React.addons.CSSTransitionGroup;
+var classSet = React.addons.classSet;
 
 /**
  * A grouped section.
@@ -15,10 +15,15 @@ module.exports = React.createClass({
     },
 
     render: function() {
+        var linkClasses = classSet({
+            "group__link": true,
+            "group__link--expanded": this.state.expanded,
+        });
+
         return (
             <div className="group">
                 <h2 className="group__title">
-                    <a href="#" className="group__link" onClick={this.toggle}>{this.props.title}</a>
+                    <a href="#" className={linkClasses} onClick={this.toggle}>{this.props.title}</a>
                     {this.renderCount()}
                 </h2>
                 {this.renderChildren()}
