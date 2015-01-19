@@ -1,5 +1,6 @@
 var React = require("react/addons");
 var classSet = React.addons.classSet;
+var ReactCSSTransitionGroup = React.addons.CSSTransitionGroup;
 
 /**
  * A grouped section.
@@ -26,7 +27,9 @@ module.exports = React.createClass({
                     <a href="#" className={linkClasses} onClick={this.toggle}>{this.props.title}</a>
                     {this.renderCount()}
                 </h2>
-                {this.renderChildren()}
+                <ReactCSSTransitionGroup transitionName="transition">
+                    {this.renderChildren()}
+                </ReactCSSTransitionGroup>
             </div>
         );
     },
