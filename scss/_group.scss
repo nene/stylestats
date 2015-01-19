@@ -2,13 +2,19 @@
 .group__title {
     font-weight: normal;
     font-size: 1em;
+    display: table;
+    width: 100%;
+}
+.group__title:hover {
+    background: $row-alternate-bg-color;
 }
 .group__link {
     text-decoration: none;
     color: inherit;
-    display: block;
+    display: table-cell;
     border-radius: 3px;
 }
-.group__link:hover {
-    background: $row-alternate-bg-color;
+.group__count {
+    display: table-cell;
+    text-align: right;
 }

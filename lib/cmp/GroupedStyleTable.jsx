@@ -1,5 +1,6 @@
 var _ = require("lodash");
 var React = require("react");
+var Group = require("./Group");
 
 /**
  * Renders table with style stats.
@@ -8,48 +9,18 @@ var React = require("react");
 module.exports = React.createClass({
     displayName: "GroupedStyleTable",
 
-    getInitialState: function() {
-        return {
-            expanded: false
-        };
-    },
-
     render: function() {
         return (
-            <table className="grouped-style-table">
-                <thead>
-                    <tr className="style-table__h1" onClick={this.expand}>
-                        <th></th>
-                        <th className="style-table__values">{this.props.title}</th>
-                        <th className="style-table__count">{this.props.total}</th>
-                    </tr>
-                </thead>
-                {this.optionallyRenderRows()}
-            </table>
+            <Group title={this.props.title} count={this.props.total}>
+                {this.renderRows()}
+            </Group>
         );
-    },
-
-    expand: function() {
-        this.setState({expanded: !this.state.expanded});
-    },
-
-    optionallyRenderRows: function() {
-        if (this.state.expanded) {
-            return this.renderRows();
-        }
-        else {
-            return [];
-        }
     },
 
     renderRows: function() {
         return this.props.groups.map(function(group) {
             return (
-                <tr className="style-table__h2">
-                    <th></th>
-                    <th className="style-table__values">{group.title}</th>
-                    <th className="style-table__count">{group.values.length}</th>
-                </tr>
+                <Group title={group.title} count={group.values.length}></Group>
             );
         }, this);
     },

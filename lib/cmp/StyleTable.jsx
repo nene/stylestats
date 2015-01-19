@@ -1,8 +1,8 @@
 var _ = require("lodash");
-var React = require("react/addons");
-var ReactCSSTransitionGroup = React.addons.CSSTransitionGroup;
+var React = require("react");
 var StyleVariant = require("./StyleVariant");
 var CountedStyleVariant = require("./CountedStyleVariant");
+var Group = require("./Group");
 
 /**
  * Renders table with style stats.
@@ -11,40 +11,12 @@ var CountedStyleVariant = require("./CountedStyleVariant");
 module.exports = React.createClass({
     displayName: "StyleTable",
 
-    getInitialState: function() {
-        return {
-            expanded: false
-        };
-    },
-
     render: function() {
         return (
-            <table className="style-table">
-                <thead>
-                    <tr className="style-table__h1" onClick={this.expand}>
-                        <th></th>
-                        <th className="style-table__values">{this.props.title}</th>
-                        <th className="style-table__count">{this.props.styles.length}</th>
-                    </tr>
-                </thead>
-                <ReactCSSTransitionGroup component="tbody" transitionName="transition">
-                    {this.optionallyRenderRows()}
-                </ReactCSSTransitionGroup>
-            </table>
+            <Group title={this.props.title} count={this.props.styles.length}>
+                {this.renderRows()}
+            </Group>
         );
-    },
-
-    expand: function() {
-        this.setState({expanded: !this.state.expanded});
-    },
-
-    optionallyRenderRows: function() {
-        if (this.state.expanded) {
-            return this.renderRows();
-        }
-        else {
-            return [];
-        }
     },
 
     renderRows: function() {
@@ -54,11 +26,11 @@ module.exports = React.createClass({
             };
 
             return (
-                <tr className="style-table__row" key={style.backgroundStyle}>
-                    <td className="style-table__example" style={css} onClick={this.onStyleSelect.bind(this, style)}></td>
-                    <td className="style-table__values">{this.renderVariants(style.variants)}</td>
-                    <td className="style-table__count">{style.count}</td>
-                </tr>
+                <div className="style-example" key={style.backgroundStyle}>
+                    <span className="style-example__example" style={css} onClick={this.onStyleSelect.bind(this, style)}></span>
+                    <span className="style-example__variants">{this.renderVariants(style.variants)}</span>
+                    <span className="style-example__count">{style.count}</span>
+                </div>
             );
         }, this);
     },

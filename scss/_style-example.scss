@@ -1,0 +1,23 @@
+/* A row showing concrete style stats */
+.style-example {
+    display: table;
+    width: 100%;
+}
+.style-example:nth-child(2n) {
+    background: $row-alternate-bg-color;
+}
+.style-example__example {
+    display: table-cell;
+    width: $example-size;
+    height: $example-size;
+    cursor: pointer;
+}
+.style-example__variants {
+    display: table-cell;
+    padding: 0 1em;
+}
+.style-example__count {
+    display: table-cell;
+    text-align: right;
+}
+

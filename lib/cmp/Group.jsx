@@ -3,7 +3,7 @@ var ReactCSSTransitionGroup = React.addons.CSSTransitionGroup;
 
 /**
  * A grouped section.
- * <Group title={string}>{children}</Group>
+ * <Group title={string} count={number}>{children}</Group>
  */
 module.exports = React.createClass({
     displayName: "Group",
@@ -19,6 +19,7 @@ module.exports = React.createClass({
             <div className="group">
                 <h2 className="group__title">
                     <a href="#" className="group__link" onClick={this.toggle}>{this.props.title}</a>
+                    {this.renderCount()}
                 </h2>
                 {this.renderChildren()}
             </div>
@@ -31,8 +32,15 @@ module.exports = React.createClass({
         }
     },
 
+    renderCount: function() {
+        if (this.props.count) {
+            return <span className="group__count">{this.props.count}</span>;
+        }
+    },
+
     toggle: function(event) {
         event.preventDefault();
+        console.log("toggle");
         this.setState({expanded: !this.state.expanded});
     }
 });
