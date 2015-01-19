@@ -4,6 +4,7 @@ var watchify = require('watchify');
 var source = require('vinyl-source-stream');
 var reactify = require('reactify');
 var gutil = require('gulp-util');
+var sass = require('gulp-sass');
 
 var IS_WATCH = false;
 
@@ -33,8 +34,15 @@ gulp.task('browserify', function() {
     return rebundle();
 });
 
+gulp.task('sass', function() {
+    gulp.src('./scss/*.scss')
+        .pipe(sass())
+        .pipe(gulp.dest('./build'));
+});
+
 gulp.task('watch', function() {
     IS_WATCH = true;
+    gulp.watch('./scss/*.scss', ['sass']);
     gulp.start('browserify');
 });
 
