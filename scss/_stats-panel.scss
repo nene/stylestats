@@ -1,0 +1,9 @@
+/* Left-side statistics panel */
+.stats-panel {
+    box-sizing: border-box;
+    width: calc(50% - 1em);
+    height: 100vh;
+    padding: 1em;
+    overflow-y: scroll;
+    float: left;
+}

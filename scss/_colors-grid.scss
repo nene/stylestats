@@ -1,0 +1,17 @@
+/* Grid for overview of all colors */
+.colors-grid {
+    overflow: auto;
+    padding: 30px;
+    margin: 0 auto;
+}
+.colors-grid__cell {
+    position: relative;
+    float: left;
+    border-radius: 100%;
+    cursor: pointer;
+    box-shadow: 1px 1px 1px 1px rgba(0,0,0, 0.2);
+}
+.colors-grid__cell:hover {
+    box-shadow: 1px 1px 1px 1px rgba(0,0,0, 0.5);
+    z-index: 105 !important; /* To override the inline style */
+}

@@ -1,0 +1,35 @@
+/* Style statistics table */
+.style-table, .grouped-style-table {
+    margin: 1em 0;
+    border-collapse: collapse;
+    width: 100%;
+}
+.style-table-row:nth-child(2n) {
+    background: #eee;
+}
+.style-table__h1, .style-table__h2 {
+    color: #fdfdfd;
+    height: 25px;
+}
+.style-table__h1 {
+    background: #666;
+    font-weight: 400;
+    cursor: pointer;
+}
+.style-table__h2 {
+    background: #888;
+    font-weight: 200;
+}
+.style-table__example {
+    width: 25px;
+    height: 25px;
+    cursor: pointer;
+}
+.style-table__values {
+    padding: 0 1em;
+}
+.style-table__count {
+    width: 50px;
+    text-align: right;
+    padding: 0 1em;
+}
