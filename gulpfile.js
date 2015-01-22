@@ -12,24 +12,34 @@ var reactifyES6 = function(file) {
     return reactify(file, {es6: true});
 };
 
-gulp.task('browserify', function() {
-    var bundler = watchify(browserify({
-        entries:['./index.js'],
-        transform: [reactifyES6],
-        extensions: ['.jsx']
-    }));
+var browserifyArgs = {
+    cache: {},
+    packageCache: {},
+    fullPaths: true,
+    entries:['./index.js'],
+    transform: [reactifyES6],
+    extensions: ['.jsx']
+};
 
-    if (IS_WATCH) {
-        bundler.on("update", rebundle);
-    }
+gulp.task('browserify', function() {
+    browserify(browserifyArgs)
+        .bundle()
+        .pipe(source('stylestats.js'))
+        .pipe(gulp.dest('./build/'));
+});
+
+gulp.task('watch-browserify', function() {
+    var bundler = watchify(browserify(browserifyArgs));
 
     function rebundle() {
-        console.log("Rebundling...");
         bundler.bundle()
             .on('error', gutil.log.bind(gutil, 'Browserify Error'))
             .pipe(source('stylestats.js'))
             .pipe(gulp.dest('./build/'));
     }
+
+    bundler.on("update", rebundle);
+    bundler.on("log", console.log);
 
     return rebundle();
 });
@@ -43,7 +53,7 @@ gulp.task('sass', function() {
 gulp.task('watch', function() {
     IS_WATCH = true;
     gulp.watch('./scss/*.scss', ['sass']);
-    gulp.start('browserify');
+    gulp.start('watch-browserify');
 });
 
-gulp.task('default', ['browserify']);
+gulp.task('default', ['browserify', 'sass']);
