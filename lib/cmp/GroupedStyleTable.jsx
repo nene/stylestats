@@ -20,8 +20,22 @@ module.exports = React.createClass({
     renderRows: function() {
         return this.props.groups.map(function(group) {
             return (
-                <Group key={group.title} title={group.title} count={group.values.length}></Group>
+                <Group key={group.title} title={group.title} count={group.values.length}>
+                    {this.renderValues(group.values)}
+                </Group>
             );
         }, this);
     },
+
+    renderValues: function(values) {
+        return values.map(function(value){
+            return (
+                <div className="style-example">
+                    <span className="style-example__example"></span>
+                    <span className="style-example__variants">{value.value}</span>
+                    <span className="style-example__count">{value.count}</span>
+                </div>
+            );
+        });
+    }
 });
