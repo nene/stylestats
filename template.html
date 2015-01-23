@@ -1,31 +1,3 @@
-{{#sizeStats.length}}
-    <h1>Sizes</h1>
-    {{#sizeStats}}
-        <table class="style-table">
-            <tr class="style-table-h1">
-                <th></th>
-                <th class="style-values">{{title}}</th>
-                <th class="style-count">{{total}}</th>
-            </tr>
-            {{#groups}}
-                {{#values.length}}
-                    <tr class="style-table-h2">
-                        <th></th>
-                        <th class="style-values">{{title}}</th>
-                        <th class="style-count">{{values.length}}</th>
-                    </tr>
-                    {{#values}}
-                        <tr class="style-table-row">
-                            <td class="style-example"></td>
-                            <td class="style-values">{{value}}</td>
-                            <td class="style-count">{{count}}</td>
-                        </tr>
-                    {{/values}}
-                {{/values.length}}
-            {{/groups}}
-        </table>
-    {{/sizeStats}}
-{{/sizeStats.length}}
 
 {{#selectorStats}}
     <h1>{{count}} selectors</h1>
