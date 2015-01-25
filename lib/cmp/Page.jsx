@@ -2,27 +2,51 @@ var _ = require("lodash");
 var React = require("react");
 var StatsPanel = require("./StatsPanel");
 var SourcePanel = require("./SourcePanel");
+var stats = require("../stats");
 
 /**
  * Render the whole page.
- * <Page css={string} stats={Object}/>
+ * <Page css={string}/>
+ *
+ * Call setCss() to update the CSS source.
  */
 module.exports = React.createClass({
     displayName: "Page",
 
     getInitialState: function() {
         return {
-            css: _.escape(this.props.css)
+            css: undefined,
+            stats: undefined
         };
     },
 
     render: function() {
         return (
             <div className="page">
-                <StatsPanel stats={this.props.stats} onSelect={this.onSelect}/>
-                <SourcePanel css={this.state.css}/>
+                {this.renderContent()}
             </div>
         );
+    },
+
+    renderContent: function() {
+        // Only render page content after CSS and stats provided
+        if (this.state.css && this.state.stats) {
+            return [
+                <StatsPanel stats={this.state.stats} onSelect={this.onSelect}/>,
+                <SourcePanel css={this.state.css}/>
+            ];
+        }
+    },
+
+    /**
+     * Generates stats for given CSS source.
+     * @param {String} css
+     */
+    setCss: function(css) {
+        this.setState({
+            css: _.escape(css),
+            stats: stats(css)
+        });
     },
 
     onSelect: function(declarations) {

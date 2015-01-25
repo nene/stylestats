@@ -2,29 +2,34 @@ var $ = require("jquery");
 var React = require("react");
 var LoadMask = require("./LoadMask");
 var Page = require("./cmp/Page");
-var stats = require("./stats");
 
 class App {
     run() {
         $(document).ready(function(){
-            this.refreshStats();
+            this.renderPage();
 
             $(window).bind('hashchange', this.refreshStats.bind(this));
+
+            this.refreshStats();
+        }.bind(this));
+    }
+
+    renderPage() {
+        this.page = React.render(
+            React.createElement(Page),
+            document.getElementById('content')
+        );
+    }
+
+    refreshStats() {
+        this.loadCss(this.getCssFilename(), function(cssSource) {
+            this.page.setCss(cssSource);
         }.bind(this));
     }
 
     getCssFilename() {
         var matches = window.location.hash.match(/#!file=(.*)/);
         return matches[1] || "samples/xrebel.css";
-    }
-
-    refreshStats() {
-        this.loadCss(this.getCssFilename(), function(cssSource) {
-            React.render(
-                React.createElement(Page, {css: cssSource, stats: stats(cssSource)}),
-                document.getElementById('content')
-            );
-        }.bind(this));
     }
 
     loadCss(cssFilename, callback) {
