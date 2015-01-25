@@ -2,6 +2,7 @@ var React = require("react");
 var ColorsGrid = require("./ColorsGrid");
 var StyleStats = require("./StyleStats");
 var GroupedStyleStats = require("./GroupedStyleStats");
+var SelectorsTable = require("./SelectorsTable");
 var Chart = require("./Chart");
 var chartsRenderer = require("../chartsRenderer");
 
@@ -27,6 +28,7 @@ module.exports = React.createClass({
                 <StyleStats title="Colors" stats={stats.colorStats} onSelect={this.props.onSelect}/>
                 <StyleStats title="Gradients" stats={stats.gradientStats} onSelect={this.props.onSelect}/>
                 <GroupedStyleStats title="Sizes" stats={stats.sizeStats} onSelect={this.props.onSelect}/>
+                <SelectorsTable stats={stats.selectorStats} onSelect={this.props.onSelect}/>
             </div>
         );
     }
