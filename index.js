@@ -4,15 +4,7 @@ var React = require("react");
 var Page = require("./lib/cmp/Page");
 var stats = require("./lib/stats");
 
-var templateSource;
 var loadMask;
-
-function afterTemplateLoaded(callback) {
-    $.get("template.html", function(tpl) {
-        templateSource = tpl;
-        callback();
-    });
-}
 
 function getCssFilename() {
     var matches = window.location.hash.match(/#!file=(.*)/);
@@ -34,10 +26,8 @@ function refreshStats() {
 $(document).ready(function(){
     loadMask = new LoadMask($(".load-mask"));
 
-    afterTemplateLoaded(function() {
-        refreshStats();
+    refreshStats();
 
-        $(window).bind('hashchange', refreshStats);
-    });
+    $(window).bind('hashchange', refreshStats);
 });
 
