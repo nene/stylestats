@@ -19,6 +19,12 @@
     "gulp": "^3.8.10",
     "gulp-sass": "^1.3.2",
     "gulp-util": "^3.0.1",
+    "karma": "*",
+    "karma-beep-reporter": "*",
+    "karma-browserify": "*",
+    "karma-jasmine": "^0.2.2",
+    "karma-phantomjs-launcher": "*",
+    "polyfill-function-prototype-bind": "*",
     "reactify": "^0.17.1",
     "vinyl-source-stream": "^1.0.0",
     "watchify": "^2.2.1"
