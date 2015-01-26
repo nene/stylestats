@@ -20,10 +20,10 @@ module.exports = React.createClass({
             <div className="stats-panel">
                 <ColorsGrid colors={stats.gridColors} onSelect={this.props.onSelect}/>
                 <Chart title="Specificity chart" id="specificity-chart"
-                    series={stats.selectorStats.specificityChart}
+                    series={stats.specificityChart}
                     onRender={chartsRenderer.renderSpecificity}/>
                 <Chart title="Complexity chart" id="complexity-chart"
-                    series={stats.selectorStats.complexityChart}
+                    series={stats.complexityChart}
                     onRender={chartsRenderer.renderComplexity}/>
                 <StyleStats title="Colors" stats={stats.colorStats} onSelect={this.props.onSelect}/>
                 <StyleStats title="Gradients" stats={stats.gradientStats} onSelect={this.props.onSelect}/>
